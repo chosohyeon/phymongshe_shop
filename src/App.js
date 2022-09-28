@@ -13,14 +13,12 @@ import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
     const [itm, setItm] = useState();
-    const [cart, setCart] = useState([
-        { id: 1, itm: "sssssss", price: 5000 }
-    ]);
+    const [cart, setCart] = useState([]);
     useEffect(() => {
         const url = 'https://desipossa.github.io/shop_cra/assets/data.json'
         const getProduct = async () => {
             const res = await axios.get(url)
-            console.log(res.data);
+            
             const shopdata = res.data.slice(50, 140).map(it => {
                 return {
                     id: it.id,
@@ -36,7 +34,6 @@ const App = () => {
                 }
             })
             setItm(shopdata);
-            console.log(shopdata);
         }
         getProduct();
     }, [])
