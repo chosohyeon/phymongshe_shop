@@ -22,7 +22,7 @@ const Header = () => {
             <TopBanner />
             <div className='gnb'>
                 <h1>
-                    <a href='/'>
+                    <a href='/phymongshe_shop'>
                         <img src={process.env.PUBLIC_URL + '/assets/img/top_logo.png'} alt="" />
                     </a>
                 </h1>
