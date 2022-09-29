@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import { top_banner } from "../data/common";
-import "../css/TopBanner.scss";
-import { FiArrowLeft,FiArrowRight } from "react-icons/fi";
+import "../css/TopBanner.scss"
+import { Link } from 'react-router-dom';
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+
 
 const TopBanner = () => {
     const topSlider = useRef(null);

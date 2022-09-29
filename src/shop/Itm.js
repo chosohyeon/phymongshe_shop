@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const Itm = ({ shopList, cart, setCart }) => {
   const { itm } = useParams();
   const navigate = useNavigate();
-  const matchItm = shopList.find(it => itm == it.id);
+  const matchItm = shopList.find(it => itm === String(it.id));
   return (
     <section className='shopItm'>
       <div className='inner'>
@@ -27,7 +27,7 @@ const Itm = ({ shopList, cart, setCart }) => {
           <button onClick={() => {
             setCart([
               ...cart,
-              { id: matchItm.id, itm: matchItm.name }
+              { id: matchItm.id, itm: matchItm.name, e: 1 }
             ])
             navigate('/cart')
           }

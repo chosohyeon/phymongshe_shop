@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, setCart }) => {
+  // useEffect
   return (
     <div style={{ paddingTop: '500px' }}>
       {

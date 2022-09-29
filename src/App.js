@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import List from './shop/List';
 import Itm from './shop/Itm';
 import Cart from './shop/Cart';
+import Category from './shop/Category';
 import './css/ShopDetail.scss';
 import { Route, Routes } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ const App = () => {
         const url = 'https://desipossa.github.io/shop_cra/assets/data.json'
         const getProduct = async () => {
             const res = await axios.get(url)
-            
+
             const shopdata = res.data.slice(50, 140).map(it => {
                 return {
                     id: it.id,
@@ -39,20 +40,21 @@ const App = () => {
     }, [])
     return (
         <>
-            <Header />
-
             {
                 itm ?
-                    <Routes>
-                        <Route path='/' element={<Main />} />
-                        <Route path='/cart' element={<Cart cart={cart} />} />
-                        <Route path='/shopList' element={<List shopList={itm} />} />
-                        <Route path='/shopItem/:itm' element={<Itm shopList={itm} cart={cart} setCart={setCart} />} />
-                    </Routes>
-
+                    <div className='wapper'>
+                        <Header cart={cart} shopList={itm} />
+                        <Routes>
+                            <Route path='/' element={<Main shopList={itm} />} />
+                            <Route path='/cart' element={<Cart cart={cart} setCart={setCart} />} />
+                            <Route path='/shopList' element={<List shopList={itm} />} />
+                            <Route path='/shopList/:cate' element={<Category shopList={itm} />} />
+                            <Route path='/shopItem/:itm' element={<Itm shopList={itm} cart={cart} setCart={setCart} />} />
+                        </Routes>
+                        <Footer />
+                    </div>
                     : <div>로딩 중 입니다.</div>
             }
-            <Footer />
         </>
     )
 }
