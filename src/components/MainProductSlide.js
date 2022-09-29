@@ -1,6 +1,5 @@
 import React from 'react'
 import CategorySlider from './CategorySlider';
-import MainCategory from './MainCategory'
 
 const MainProductSlide = ({ shopList, category }) => {
     return (

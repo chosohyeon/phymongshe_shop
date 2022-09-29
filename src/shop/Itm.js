@@ -1,4 +1,3 @@
-import React, {useEffect, useRef} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const Itm = ({ shopList, cart, setCart }) => {
