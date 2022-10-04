@@ -1,4 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 
 const Itm = ({ shopList, cart, setCart }) => {
   const { itm } = useParams();
@@ -12,12 +13,12 @@ const Itm = ({ shopList, cart, setCart }) => {
         </div>
         <div className='right'>
           <div className='name'>{matchItm.name}</div>
-          <div className='des'>{matchItm.des.substring(0, 100)}...</div>
+          <div className='des'>{matchItm.des.substring(0, 300)}...</div>
           <ul className='color'>
             {
               matchItm.color.map((color, idx) => {
                 return (
-                  <li style={{ background: color.hex_value}} key={idx}>{color.hex_value}</li>
+                  <li style={{ background: color.hex_value }} key={idx}>{color.hex_value}</li>
                 )
               })
             }
@@ -26,7 +27,14 @@ const Itm = ({ shopList, cart, setCart }) => {
           <button onClick={() => {
             setCart([
               ...cart,
-              { id: matchItm.id, itm: matchItm.name, e: 1 }
+              {
+                id: matchItm.id,
+                name: matchItm.name,
+                des: matchItm.des,
+                src: matchItm.src,
+                price: matchItm.price,
+                e: 1
+              }
             ])
             navigate('/cart')
           }
